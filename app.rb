@@ -6,6 +6,11 @@ require 'health_graph'
 require 'nike'
 require 'geoutm'
 
+# Nike gem PR https://github.com/skryl/nike/pull/4 has not been merged yet
+# so we need to deal with v1 of the Nike+ API is no longer accepting 
+# requests over HTTP ourselves. Using HTTPS instead restores functionality.
+Nike::Client.send(:base_uri, 'https://secure-nikeplus.nike.com/plus')
+
 APP_DOMAIN = ENV['APP_DOMAIN'] || 'http://localhost:9292'
 APP_SECRET = ENV['APP_SECRET'] || 'nikeplus-to-runkeeper'
 RUNKEEPER_CLIENT_ID = ENV['RUNKEEPER_CLIENT_ID']
