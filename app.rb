@@ -105,6 +105,10 @@ class NikePlusToRunkeeperImporter < Sinatra::Base
         average_heart_rate: nike_activity.average_heart_rate.to_f
       }
 
+      if nike_activity.tags.note
+        runkeeper_activity[:notes] = nike_activity.tags.note
+      end
+
       if a.gps && nike_activity.geo && nike_activity.geo.waypoints
         index = -1
         total = nike_activity.geo.waypoints.size
