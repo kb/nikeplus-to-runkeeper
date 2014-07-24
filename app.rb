@@ -65,8 +65,11 @@ class NikePlusToRunkeeperImporter < Sinatra::Base
     periods = [
       { name: 'Last week', value: Time.now - (day * 7) },
       { name: 'Last 30 days', value: Time.now - (day * 30) },
-      { name: 'Last year', value: Time.now - (day * 365) },
-      { name: 'Everything', value: '' }
+      { name: '1 year', value: Time.now - (day * 365) },
+      { name: '2 years', value: Time.now - ((day * 365) * 2) },
+      { name: '3 years', value: Time.now - ((day * 365) * 3) },
+      { name: '4 years', value: Time.now - ((day * 365) * 4) },
+      { name: '5 years', value: Time.now - ((day * 365) * 5) }
     ]
     erb(:import, locals: { periods: periods })
   end
