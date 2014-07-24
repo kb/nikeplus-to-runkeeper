@@ -97,7 +97,7 @@ class NikePlusToRunkeeperImporter < Sinatra::Base
 
       runkeeper_activity = {
         type: 'Running',
-        start_time: nike_activity.start_time_utc,
+        start_time: nike_activity.start_time_utc + nike_activity.start_time_utc.gmt_offset,
         total_distance: nike_activity.distance * 1000,
         duration: duration,
         detect_pauses: true,
